@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ProjectMVC.Schedule>
+
+@{
+    ViewData["Title"] = "Розклад сесії групи";
+}
+
+<h1>Розклад сесії групи</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.ExamName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.ExamDate)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.ExamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.ExamDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

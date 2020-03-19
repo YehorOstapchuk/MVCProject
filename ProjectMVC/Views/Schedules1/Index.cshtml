@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ProjectMVC.Schedule>
+
+@{
+    ViewData["Title"] = "Список екзаменів";
+}
+
+    <h1>Список екзаменів</h1>
+
+<p>
+    @Html.ActionLink("Додати новий предмет до сессії", "Create", new { sessionId = @ViewBag.SessionID })
+    <hr />
+    <a asp-controller="Exams" asp-action="Index">Додати новий екзамен до існуючих</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.ExamName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.ExamDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.ExamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.ExamDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id, sessionID = @ViewBag.SessionID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id, sessionID = @ViewBag.SessionID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

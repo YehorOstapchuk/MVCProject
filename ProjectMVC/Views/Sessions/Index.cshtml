@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProjectMVC.Sessions>
+
+@{
+    ViewData["Title"] = "Сессії";
+}
+
+    <h1>Сессії</h1>
+
+<p>
+    <a asp-action="Create">Додати сессію</a>
+    <hr />
+    <a asp-controller="Exams" asp-action="Index">Додати новий екзамен до існуючих</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.GroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

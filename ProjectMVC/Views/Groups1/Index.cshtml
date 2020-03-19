@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjectMVC.Group>
+
+@{
+    ViewData["Title"] = "Групи за кафедрами";
+}
+
+<h1>Групи за кафедрою @ViewBag.FacultyName</h1>
+
+<p>
+    @Html.ActionLink("Додати нову групу", "Create", new { cathedraID = @ViewBag.CathedraID })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfStudying)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cathedra)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupName)
+                </td>
+                <td>
+                    @{
+                        @if (item.TypeOfStudying == 1)
+                        {
+                            <text>Очне</text>
+                        }
+                        else if (item.TypeOfStudying == 0)
+                        {
+                            <text>Заочне</text>
+                        }
+                        else
+                        {
+                            <text>Інший</text>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cathedra.CathedraName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id, cathedraID = @ViewBag.CathedraID }) |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Schedule" asp-route-id="@item.Id">Schedule</a> |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, cathedraID = @ViewBag.CathedraID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

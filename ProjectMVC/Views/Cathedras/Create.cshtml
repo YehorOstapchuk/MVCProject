@@ -1,0 +1,35 @@
+﻿@model ProjectMVC.Cathedras
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Створити</h1>
+
+<h4>Кафедру</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CathedraName" class="control-label"></label>
+                <input asp-for="CathedraName" class="form-control" />
+                <span asp-validation-for="CathedraName" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" value="@ViewBag.FacultyID" name="FacultyID" />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href='javascript:history.go(-1)'>Повернутися до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProjectMVC.Cathedras>
+
+@{
+    ViewData["Title"] = "Кафедри за факультетами";
+}
+
+    <h1>Кафедри за факультетом @ViewBag.FacultyName</h1>
+
+    <p>
+        @Html.ActionLink("Додати нову кафедру", "Create", new { facultyID = @ViewBag.FacultyID })
+    </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CathedraName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Faculty)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CathedraName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty.FacultyName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id, facultyID = @ViewBag.FacultyID })|
+                <!--  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>   | -->
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <!--<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>-->
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id, facultyID = @ViewBag.FacultyID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
