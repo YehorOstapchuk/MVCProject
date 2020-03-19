@@ -18,7 +18,7 @@ namespace ProjectMVC
         [MaxLength(50)]
         [RegularExpression(@"[А-Я|Є|І|']{1}[а-я|є|і|']+$", ErrorMessage = "Некорректне ім'я")]
         public string Surname { get; set; }
-        //[Required(ErrorMessage = "Поле не може бути пустим")]
+        [Required(ErrorMessage = "Поле не може бути пустим")]
         [Display(Name = "Дата народження")]
         [DataType(DataType.Date)]
         [Remote(action: "CheckBirth", controller: "Aspirants", ErrorMessage = "Некоректна дата")]

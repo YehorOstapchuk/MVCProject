@@ -144,7 +144,7 @@ namespace ProjectMVC.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             int count = 0;
-            var facultis = _context.Faculties.ToArray();
+            var facultis = _context.Faculties.Where(c => c.Id == id).ToArray();
             foreach(var c in facultis)
             {
                 var cathedras = _context.Cathedras.Where(z => z.FacultyId == c.Id).ToArray();
@@ -254,10 +254,17 @@ namespace ProjectMVC.Controllers
                                     try
                                     {
                                          Cathedras newcath;
+                                       //ool flagg = false;
+                                      //string cathName = row.Cell(1).Value.ToString();
+                                     // var v = _context.Cathedras.ToArray();
+                                     // foreach(var cath in v)
+                                     // {
+                                     //     if (cath.CathedraName == cathName) { flagg = true; break; }
+                                     // }
                                         var v = (from cath in _context.Cathedras  //.Where(k => k.FacultyId == newfac.Id)
                                                  where cath.CathedraName.Contains(row.Cell(1).Value.ToString())
-                                                 select cath).ToList();
-                                        if (v.Count > 0)
+                                                select cath).ToList();
+                                        if (v.Count>0)
                                         {
                                             newcath = v[0];
                                         }
@@ -300,7 +307,16 @@ namespace ProjectMVC.Controllers
                                         // book.Info = row.Cell(6).Value.ToString();
                                         aspirant.Group = newgrp;
                                         aspirant.GroupId = newgrp.Id;
-                                        _context.Aspirant.Add(aspirant);
+                                        bool flag = true;
+                                        var aspirants = _context.Aspirant.Where(n => n.GroupId == newgrp.Id).ToArray();
+                                        foreach(var asp in aspirants)
+                                        {
+                                            if (( asp.Name == aspirant.Name)&&(asp.Surname == aspirant.Surname)&&(asp.BirthDay == aspirant.BirthDay)) { flag = false; break; }
+                                        }
+                                        if (flag)
+                                        {
+                                            _context.Aspirant.Add(aspirant);
+                                        }
                                     }
                                     catch (Exception e)
                                     {

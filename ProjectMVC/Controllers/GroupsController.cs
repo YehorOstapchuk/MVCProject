@@ -231,7 +231,16 @@ namespace ProjectMVC.Controllers
                                         // book.Info = row.Cell(6).Value.ToString();
                                         aspirant.Group = newgrp;
                                         aspirant.GroupId = newgrp.Id;
-                                        _context.Aspirant.Add(aspirant);
+                                        bool flag = true;
+                                        var aspirants = _context.Aspirant.Where(n => n.GroupId == newgrp.Id).ToArray();
+                                        foreach (var asp in aspirants)
+                                        {
+                                            if ((asp.Name == aspirant.Name) && (asp.Surname == aspirant.Surname) && (asp.BirthDay == aspirant.BirthDay)) { flag = false; break; }
+                                        }
+                                        if (flag)
+                                        {
+                                            _context.Aspirant.Add(aspirant);
+                                        }
                                     }
                                     catch (Exception e)
                                     {

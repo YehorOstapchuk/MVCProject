@@ -209,13 +209,13 @@ namespace ProjectMVC.Controllers
 
 
         [AcceptVerbs("Get", "Post")]
-        public IActionResult CheckBirth(DateTime d2)
+        public IActionResult CheckBirth(DateTime BirthDay)
         {
 
             DateTime time_now = DateTime.Now;
             // DateTime d1 = new DateTime(2020, 1, 20, 6, 20, 40);
             // DateTime d2 = aspirant.BirthDay.Value;
-            if (DateTime.Compare(time_now, d2) <= 0)
+            if (DateTime.Compare(time_now, BirthDay) <= 0)
             {
                 return Json(false);
             }
