@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectMVC;
 
+
 namespace ProjectMVC.Controllers
 {
+
     public class Schedules1Controller : Controller
     {
         private readonly DBAspirantContext _context;

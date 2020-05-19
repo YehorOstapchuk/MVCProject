@@ -10,9 +10,12 @@ using Microsoft.EntityFrameworkCore;
 using ProjectMVC;
 using Microsoft.AspNetCore.Http;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace ProjectMVC.Controllers
 {
+    [Authorize(Roles ="admin, user")]
     public class GroupsController : Controller
     {
         private readonly DBAspirantContext _context;
@@ -240,6 +243,7 @@ namespace ProjectMVC.Controllers
                                         if (flag)
                                         {
                                             _context.Aspirant.Add(aspirant);
+                                            await _context.SaveChangesAsync();
                                         }
                                     }
                                     catch (Exception e)

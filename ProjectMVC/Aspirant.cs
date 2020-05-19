@@ -25,7 +25,9 @@ namespace ProjectMVC
        // [Remote(action: "CheckBirth", controller: "Aspirants1", ErrorMessage = "Некоректна дата")]
         public DateTime? BirthDay { get; set; }
         [Display(Name = "Назва групи")]
+        [Required(ErrorMessage = "Поле не може бути пустим")]
         public int? GroupId { get; set; }
+        [Required(ErrorMessage = "Поле не може бути пустим")]
 
         [Display(Name = "Назва групи")]
         public virtual Group Group { get; set; }

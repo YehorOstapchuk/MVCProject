@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectMVC;
 
+
 namespace ProjectMVC.Controllers
 {
+
     public class ExamsController : Controller
     {
         private readonly DBAspirantContext _context;

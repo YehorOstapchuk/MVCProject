@@ -42,6 +42,26 @@
               "target": "Package",
               "version": "[0.94.2, )"
             },
+            "DocX": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.10.1, )"
+            },
+            "GemBox.Document": {
+              "target": "Package",
+              "version": "[31.0.1175, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
             "Microsoft.EntityFrameworkCore.Relational.Design": {
               "target": "Package",
               "version": "[1.1.6, )"
@@ -60,9 +80,17 @@
               "target": "Package",
               "version": "[3.1.2, )"
             },
+            "Microsoft.Office.Interop.Word": {
+              "target": "Package",
+              "version": "[15.0.4797.1003, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "sautinsoft.document": {
+              "target": "Package",
+              "version": "[4.4.4.8, )"
             }
           },
           "imports": [
